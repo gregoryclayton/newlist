@@ -122,15 +122,18 @@ backend:
 
   - task: "User Profile CRUD API Endpoints"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created POST /api/profiles, GET /api/profiles (with pagination), GET /api/profiles/{id}, DELETE /api/profiles/{id}"
+      - working: true
+        agent: "testing"
+        comment: "Fixed error handling in profile endpoints. All CRUD operations are working correctly with proper error handling for invalid IDs."
 
   - task: "File Upload & Content Management"
     implemented: true
