@@ -129,6 +129,8 @@ class BackendAPITest:
             invalid_id = str(uuid.uuid4())
             response_invalid = requests.get(f"{BACKEND_URL}/profiles/{invalid_id}")
             print(f"Status Code (invalid ID): {response_invalid.status_code}")
+            if response_invalid.status_code != 200:
+                print(f"Error response: {response_invalid.text}")
             
             if (response.status_code == 200 and 
                 response.json()["id"] == self.created_profile_id and
