@@ -131,6 +131,9 @@ async def get_user_profile(profile_id: str):
             return UserProfile(**profile)
         else:
             raise HTTPException(status_code=404, detail="Profile not found")
+    except HTTPException as he:
+        # Re-raise HTTP exceptions as-is
+        raise he
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
