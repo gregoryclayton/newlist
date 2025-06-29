@@ -186,6 +186,9 @@ async def add_content_to_profile(
         )
         
         return {"message": "Content added successfully", "content_item": content_item}
+    except HTTPException as he:
+        # Re-raise HTTP exceptions as-is
+        raise he
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
