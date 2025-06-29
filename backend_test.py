@@ -229,6 +229,8 @@ class BackendAPITest:
                 data=text_data
             )
             print(f"Status Code (invalid ID): {response_invalid.status_code}")
+            if response_invalid.status_code != 200:
+                print(f"Error response: {response_invalid.text}")
             
             if (response_text.status_code == 200 and 
                 response_file.status_code == 200 and
