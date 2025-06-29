@@ -152,15 +152,18 @@ backend:
 
   - task: "Content Addition to Profiles"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created POST /api/profiles/{id}/content endpoint for adding mixed content types"
+      - working: true
+        agent: "testing"
+        comment: "Fixed error handling in content addition endpoint. Successfully tested adding both text and image content to profiles."
 
 frontend:
   - task: "Infinite Scrolling Profile List"
