@@ -221,11 +221,7 @@ metadata:
   run_ui: false
 
 test_plan:
-  current_focus:
-    - "User Profile CRUD API Endpoints"
-    - "File Upload & Content Management"
-    - "User Profile Database Schema & Models"
-    - "Content Addition to Profiles"
+  current_focus: []
   stuck_tasks: []
   test_all: false
   test_priority: "high_first"
