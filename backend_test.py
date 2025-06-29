@@ -260,11 +260,15 @@ class BackendAPITest:
             # Verify deletion by trying to get the profile
             response_get = requests.get(f"{BACKEND_URL}/profiles/{self.created_profile_id}")
             print(f"Status Code (get after delete): {response_get.status_code}")
+            if response_get.status_code != 200:
+                print(f"Error response: {response_get.text}")
             
             # Test with invalid ID
             invalid_id = str(uuid.uuid4())
             response_invalid = requests.delete(f"{BACKEND_URL}/profiles/{invalid_id}")
             print(f"Status Code (invalid ID): {response_invalid.status_code}")
+            if response_invalid.status_code != 200:
+                print(f"Error response: {response_invalid.text}")
             
             if (response.status_code == 200 and 
                 response_get.status_code == 404 and
