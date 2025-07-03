@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profiles - Interactive Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header-title">User Profiles</h1>
+            <button id="addProfileBtn" class="btn btn-primary">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                </svg>
+                Add Profile
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Profile List -->
+            <div id="profileList" class="profile-list">
+                <!-- Profiles will be dynamically loaded here -->
+            </div>
+
+            <!-- Loading Indicator -->
+            <div id="loadingIndicator" class="loading-indicator hidden">
+                <div class="spinner"></div>
+                <span>Loading profiles...</span>
+            </div>
+
+            <!-- End of List Message -->
+            <div id="endOfListMessage" class="end-message hidden">
+                <p>No more profiles to load</p>
+            </div>
+
+            <!-- Infinite Scroll Trigger -->
+            <div id="scrollTrigger" class="scroll-trigger"></div>
+        </div>
+    </main>
+
+    <!-- Upload Form Modal -->
+    <div id="uploadModal" class="modal hidden">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Profile</h2>
+                <button id="closeModalBtn" class="btn-close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form id="profileForm">
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="profileName">Name *</label>
+                                <input type="text" id="profileName" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="profileEmail">Email *</label>
+                                <input type="email" id="profileEmail" name="email" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileBio">Bio</label>
+                            <textarea id="profileBio" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileAvatar">Avatar</label>
+                            <input type="file" id="profileAvatar" name="avatar" accept="image/*">
+                            <div id="avatarPreview" class="avatar-preview hidden">
+                                <img id="avatarImage" src="" alt="Avatar preview">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content Items -->
+                    <div class="form-section">
+                        <div class="section-header">
+                            <h3>Content Items</h3>
+                            <button type="button" id="addContentBtn" class="btn btn-secondary btn-sm">Add Item</button>
+                        </div>
+                        
+                        <div id="contentItems" class="content-items">
+                            <!-- Content items will be added dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" id="cancelBtn" class="btn btn-outline">Cancel</button>
+                        <button type="submit" id="submitBtn" class="btn btn-primary">
+                            <span id="submitText">Create Profile</span>
+                            <div id="submitSpinner" class="spinner-sm hidden"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="toast success hidden">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+        </svg>
+        <span>Profile created successfully!</span>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="toast error hidden">
+        <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+        </svg>
+        <span id="errorText">An error occurred</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
